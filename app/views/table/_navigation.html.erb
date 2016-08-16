@@ -1,0 +1,14 @@
+ <div class="navigation-body">
+    <% @folders.each_with_level(@root.self_and_descendants) do |folder, level| %>
+        <div class="group folder" data-id=<%= folder.id %> style="padding-left: <%= (20 + 27*level).to_s + 'px' %>">
+        <div class='icons opened_folder'></div>
+        <div class="folder_name"><%= ' ' + folder.name %></div>
+        </div>
+        <% folder.data_files.each do |data_file| %>
+            <div class="group data_file" data-id=<%= data_file.id %> style="padding-left: <%= (20 + 27*(level + 1)).to_s + 'px' %>">
+            <div class='icons file'></div>
+            <div class="file_name"><%= ' ' + data_file.name %></div>
+            </div>
+        <% end %>
+    <% end %>
+  </div>

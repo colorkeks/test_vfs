@@ -1,0 +1,17 @@
+class ApplicationController < ActionController::Base
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :exception
+
+  def respond_window_with(*args, &block)
+    options = args.extract_options!
+    options[:responder] = WindowResponder
+    respond_with *args, options, &block
+  end
+
+  def respond_modal_with(*args, &block)
+    options = args.extract_options!
+    options[:responder] = ModalResponder
+    respond_with *args, options, &block
+  end
+end

@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="col-lg-6">
+      <h2><%= @folder.name %></h2>
+      <h4><%= a = @folder.size || 0 %> бит, <%= @folder.children.count %> папок,  <%= @folder.data_files.count %> файлов</h4>
+    </div>
+    <div class="col-lg-6">
+      <% if @folder.id != @root_id %>
+        <div class="icons trash_blue folder destroy" style="float: right; margin-top: 20px; margin-bottom: 10px" data-id=<%= @folder.id %>></div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-lg-6">
+      <div class="icons-group new_folder" data-id=<%= @folder.id %>>
+        <div class="icons folder_orange"></div>
+        <div>Создать папку</div>
+      </div>
+  </div>
+  <div class="col-lg-6 new_data_file"  data-id=<%= @folder.id %>>
+    <div class="icons-group">
+      <div class="icons file_blue"></div>
+      <div>Создать файл</div>
+    </div>
+  </div>
+</div>
