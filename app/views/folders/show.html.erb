@@ -2,7 +2,8 @@
   <div class="col-lg-12">
     <div class="col-lg-6">
       <h2><%= @folder.name %></h2>
-      <h4><%= a = @folder.size || 0 %> бит, <%= @folder.children.count %> папок,  <%= @folder.data_files.count %> файлов</h4>
+      <!-- TODO сделать байты и добавить гем Russian-->
+      <h4><%= a = @folder.size || 0 %> байт, <%= @folder.children.count %> папок,  <%= @folder.data_files.count %> файлов</h4>
     </div>
     <div class="col-lg-6">
       <% if @folder.id != @root_id %>

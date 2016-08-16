@@ -106,14 +106,16 @@ $(document).on('turbolinks:load', function () {
         });
 
         $('form').submit(function() {
-            var valuesToSubmit = $(this).serialize();
+            var valuesToSubmit = $(this).serializeArray();
+            var action = $(this).attr('action');
+            var name = $(this).find('input[name="data_file[name]"]').val();
             $.ajax({
                 type: "POST",
-                url: $(this).attr('action'), //sumbits it to the given url of the form
+                url: action, //sumbits it to the given url of the form
                 data: valuesToSubmit,
                 dataType: "JSON", // you want a difference between normal and ajax-calls, and json is standard
                 success: function (data) {
-                    // TODO RELOAD ONLY NAVIGATION
+                    $(".data_file[data-id=" + action.split('/')[2] + "]").find('.file_name').text(name);
                 }
             }).done(function (result) {
                 (console.log('ok'))

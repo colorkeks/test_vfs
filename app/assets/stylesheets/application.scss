@@ -143,9 +143,28 @@ html, body{
 }
 
 textarea{
-  resize: vertical;
+  resize: none;
+  height: 100% !important;
 }
 
 .actions{
   margin-top: 20px;
+}
+
+.string{
+  max-width: 200px;
+  margin-top: 20px;
+  float: left;
+}
+
+.file_container{
+  height: calc(100% - 40px);
+}
+
+.textarea_container{
+  height: 100%;
+}
+
+.row, form {
+  height: 100%;
 }
