@@ -1,15 +1,9 @@
 <div class="row">
   <div class="col-lg-12">
     <div class="col-lg-6">
-      <!-- TODO REFACTOR-->
-      <% folders = @folder.self_and_descendants %>
-      <% size = folders.collect {|h| h[:size] }.inject(:+)  %>
-      <% folders.each do |folder| %>
-          <% size += folder.data_files.collect{|h| h[:size] }.inject(:+) || 0 %>
-      <% end %>
       <h2><%= @folder.name %></h2>
       <!-- TODO сделать байты и добавить гем Russian-->
-      <h4><%= size %> байт, <%= @folder.children.count %> папок,  <%= @folder.data_files.count %> файлов</h4>
+      <h4><%= @size %> байт, <%= @folder.children.count %> папок,  <%= @folder.data_files.count %> файлов</h4>
     </div>
     <div class="col-lg-6">
       <% if @folder.id != @root_id %>

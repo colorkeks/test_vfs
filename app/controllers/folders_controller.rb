@@ -6,6 +6,7 @@ class FoldersController < ApplicationController
   # GET /folders/1.json
   def show
     @root_id = Folder.root.id
+    @size = @folder.deep_size
     respond_window_with @folder
   end
 

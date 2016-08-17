@@ -16,4 +16,17 @@ class Folder < ActiveRecord::Base
   def change_size
     self.size = self.name.length
   end
+
+  def deep_size
+    # TODO REFACTOR
+    folders = self.self_and_descendants
+    # взяли веса всех папок 'наследников' и сложили
+    size = folders.collect {|h| h[:size] }.inject(:+)
+    # складываем веса всех файлов для каждой из папок 'наследников'
+    folders.each do |folder|
+      size += folder.data_files.collect{|h| h[:size] }.inject(:+) || 0
+    end
+
+    size
+  end
 end

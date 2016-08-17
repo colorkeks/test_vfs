@@ -109,6 +109,7 @@ $(document).on('turbolinks:load', function () {
             var valuesToSubmit = $(this).serializeArray();
             var action = $(this).attr('action');
             var name = $(this).find('input[name="data_file[name]"]').val();
+            var text = $(this).find('textarea[name="data_file[text]"]').val();
             $.ajax({
                 type: "POST",
                 url: action, //sumbits it to the given url of the form
@@ -116,6 +117,7 @@ $(document).on('turbolinks:load', function () {
                 dataType: "JSON", // you want a difference between normal and ajax-calls, and json is standard
                 success: function (data) {
                     $(".data_file[data-id=" + action.split('/')[2] + "]").find('.file_name').text(name);
+                    $(".data_file_size").html('<h4>' + parseInt(name.length + text.length) + ' байт</h4>');
                 }
             }).done(function (result) {
                 (console.log('ok'))
